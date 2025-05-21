@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DropFifth - Bisnis Dropshipping Berbasis Syariah</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #135e3e;
+        --secondary: #e2f0ea;
+        --accent: #1c8a5c;
+        --text-dark: #222;
+        --text-light: #f5f5f5;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .hero-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-pattern {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.1;
+      }
+
+      .navbar {
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary);
+      }
+
+      .feature-card {
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .comparison-table {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .comparison-table th {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      .principle-card {
+        border-left: 4px solid var(--primary);
+        transition: all 0.3s ease;
+      }
+
+      .principle-card:hover {
+        transform: translateX(5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .product-card {
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .product-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .product-card img {
+        transition: transform 0.5s ease;
+      }
+
+      .akad-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .akad-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .strategy-item {
+        position: relative;
+        padding-left: 50px;
+        margin-bottom: 1.5rem;
+      }
+
+      .strategy-number {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .footer {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .testimonial-slider {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .testimonial-slide {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .testimonial-slide.active {
+        opacity: 1;
+        position: relative;
+      }
+
+      /* Animasi Fade In */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .circle-step {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 shadow-md bg-white">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="#" class="flex items-center">
+            <span class="text-2xl font-bold text-primary">
+              Drop<span class="text-accent">Fifth</span>
+            </span>
+          </a>
+          <!-- Menu Desktop -->
+          <div class="hidden md:flex space-x-8">
+            <a href="#pengertian" class="text-gray-800 hover:text-primary transition-colors">Pengertian</a>
+            <a href="#perbedaan" class="text-gray-800 hover:text-primary transition-colors">Perbandingan</a>
+            <a href="#konsep" class="text-gray-800 hover:text-primary transition-colors">Konsep Bisnis</a>
+            <a href="#prinsip" class="text-gray-800 hover:text-primary transition-colors">Prinsip Syariah</a>
+            <a href="#akad" class="text-gray-800 hover:text-primary transition-colors">Akad</a>
+            <a href="#strategi" class="text-gray-800 hover:text-primary transition-colors">Strategi</a>
+            <a href="#produk" class="text-gray-800 hover:text-primary transition-colors">Produk</a>
+          </div>
+          <!-- Hamburger -->
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-800">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+          <a href="#pengertian" class="block py-2 text-gray-800 hover:text-primary transition-colors">Pengertian</a>
+          <a href="#perbedaan" class="block py-2 text-gray-800 hover:text-primary transition-colors">Perbandingan</a>
+          <a href="#konsep" class="block py-2 text-gray-800 hover:text-primary transition-colors">Konsep Bisnis</a>
+          <a href="#prinsip" class="block py-2 text-gray-800 hover:text-primary transition-colors">Prinsip Syariah</a>
+          <a href="#akad" class="block py-2 text-gray-800 hover:text-primary transition-colors">Akad</a>
+          <a href="#strategi" class="block py-2 text-gray-800 hover:text-primary transition-colors">Strategi</a>
+          <a href="#produk" class="block py-2 text-gray-800 hover:text-primary transition-colors">Produk</a>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Script DI LUAR navbar agar tidak bentrok -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+    
+        menuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+    
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+      });
+    </script>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center justify-center">
+      <div class="hero-pattern"></div>
+      <div class="container mx-auto px-4 z-10">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 text-center md:text-left">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+              DropFifth
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+              Bisnis Dropshipping Berbasis Syariah
+            </h2>
+            <p class="text-lg text-white mb-8">
+              Pilihan tepat untuk berbisnis online yang sesuai dengan prinsip
+              syariah, tanpa riba, gharar, dan maysir.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4">
+              <a
+                href="#pengertian"
+                class="bg-white text-primary font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 text-center"
+                >Pelajari Lebih Lanjut</a
+              >
+            </div>
+          </div>
+          <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+            <img
+              src="Dropfifth.png"
+              alt="DropFifth Illustration"
+              class="rounded-lg shadow-2xl w-64 md:w-80 max-w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pengertian Dropshipping Syariah -->
+    <section id="pengertian" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Pengertian Dropshipping Syariah
+        </h2>
+        <div class="flex flex-col items-center">
+          <div class="md:w-2/3 mx-auto text-center md:text-justify">
+            <p class="text-lg mb-6 text-justify">
+              Dropshipping Syariah adalah model bisnis e-commerce di mana
+              penjual (dropshipper) menjual produk dari pemasok tanpa harus
+              menyimpan stok fisik, dengan proses transaksi yang sepenuhnya
+              mematuhi prinsip-prinsip syariah Islam.
+            </p>
+            <p class="text-lg mb-6 text-justify">
+              Dalam model ini, seluruh aspek transaksi mulai dari akad
+              (kontrak), proses pembayaran, hingga pengiriman barang harus
+              sesuai dengan ketentuan syariah yang bebas dari unsur riba
+              (bunga), gharar (ketidakjelasan), dan maysir
+              (perjudian/spekulasi).
+            </p>
+            <p class="text-lg text-justify">
+              Keunggulan utama Dropshipping Syariah DropFifth adalah
+              transparansi penuh dalam setiap proses transaksi, serta adanya
+              kejelasan akad yang digunakan, sehingga memberikan keamanan dan
+              keberkahan dalam berbisnis.
+            </p>
+          </div>
+        </div>
+        <div class="mt-12 text-center">
+          <a
+            href="#perbedaan"
+            class="btn-primary py-3 px-6 rounded-full shadow-lg inline-block"
+            >Lihat Perbedaan Jenis Dropshipping</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Perbandingan Dropshipping Syariah vs Konvensional -->
+    <section id="perbedaan" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Dropshipping Syariah vs Dropshipping Konvensional
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="comparison-table w-full bg-white shadow-lg">
+            <thead>
+              <tr>
+                <th class="p-4 text-left">Aspek</th>
+                <th class="p-4 text-left">Dropshipping Syariah (DropFifth)</th>
+                <th class="p-4 text-left">Dropshipping Konvensional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="p-4 font-semibold">Dasar Transaksi</td>
+                <td class="p-4 bg-green-50">
+                  Berdasarkan akad syariah yang jelas (Salam, Wakalah, atau
+                  Murabahah)
+                </td>
+                <td class="p-4">
+                  Berdasarkan kontrak jual beli umum tanpa memperhatikan aspek
+                  syariah
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-4 font-semibold">Kepemilikan Barang</td>
+                <td class="p-4 bg-green-50">
+                  Kejelasan kepemilikan produk sebelum dijual
+                </td>
+                <td class="p-4">
+                  Seringkali menjual barang yang belum dimiliki
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-4 font-semibold">Sistem Pembayaran</td>
+                <td class="p-4 bg-green-50">Bebas dari riba dan bunga</td>
+                <td class="p-4">Dapat melibatkan sistem kredit dan bunga</td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-4 font-semibold">Transparansi</td>
+                <td class="p-4 bg-green-50">
+                  Penuh keterbukaan tentang kondisi produk dan proses transaksi
+                </td>
+                <td class="p-4">
+                  Tidak selalu transparan, bisa terjadi ketidakjelasan (gharar)
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-4 font-semibold">Jenis Produk</td>
+                <td class="p-4 bg-green-50">
+                  Hanya produk halal dan bermanfaat
+                </td>
+                <td class="p-4">
+                  Semua jenis produk, termasuk yang tidak halal
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-4 font-semibold">Pembagian Keuntungan</td>
+                <td class="p-4 bg-green-50">
+                  Adil dan sesuai kesepakatan yang jelas
+                </td>
+                <td class="p-4">
+                  Berdasarkan keuntungan maksimal tanpa batasan
+                </td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold">Penyelesaian Sengketa</td>
+                <td class="p-4 bg-green-50">
+                  Mengutamakan musyawarah dan keadilan sesuai syariah
+                </td>
+                <td class="p-4">
+                  Berdasarkan hukum konvensional atau kebijakan platform
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-12 text-center">
+          <a
+            href="#konsep"
+            class="btn-primary py-3 px-6 rounded-full shadow-lg inline-block"
+            >Pelajari Konsep Bisnis DropFifth</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Konsep Bisnis DropFifth -->
+    <section id="konsep" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Konsep Bisnis DropFifth
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="feature-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-check text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">01</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Akad Syariah dalam Transaksi</h3>
+            <p class="text-gray-700">
+              Setiap transaksi dalam DropFifth harus mengikuti dan menyetujui
+              akad syariah yang digunakan, memberikan kejelasan hubungan antara
+              dropshipper, pemasok, dan pembeli.
+            </p>
+          </div>
+          <div class="feature-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-store text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">02</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              Produk Terdiversifikasi dan Syariah
+            </h3>
+            <p class="text-gray-700">
+              Menyediakan berbagai produk yang sesuai syariah dan bebas dari
+              unsur haram, memastikan semua produk halal dan bermanfaat bagi
+              konsumen.
+            </p>
+          </div>
+          <div class="feature-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-handshake text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">03</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              Tiga Mekanisme Transaksi Berbasis Syariah
+            </h3>
+            <p class="text-gray-700">
+              DropFifth menyediakan tiga pilihan mekanisme transaksi berbasis
+              syariah yang memberikan fleksibilitas kepada pengguna platform:
+              Akad Salam, Akad Wakalah, dan Akad Murabahah.
+            </p>
+          </div>
+          <div class="feature-card bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-shipping-fast text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">04</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">
+              Pengiriman dan Pembagian Keuntungan yang Adil
+            </h3>
+            <p class="text-gray-700">
+              Sistem pengiriman langsung dari pemasok ke pembeli, dengan
+              pembagian keuntungan yang adil dan transparan sesuai dengan akad
+              yang disepakati.
+            </p>
+          </div>
+        </div>
+        <div class="mt-16 text-center">
+          <a
+            href="#prinsip"
+            class="btn-primary py-3 px-6 rounded-full shadow-lg inline-block"
+            >Lihat Prinsip Syariah DropFifth</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Prinsip Syariah dalam DropFifth -->
+    <section id="prinsip" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Prinsip Syariah dalam DropFifth
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="principle-card bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-percent text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">01</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Menghindari Riba</h3>
+            <p class="text-gray-700">
+              Tidak ada bunga dalam sistem pembayaran. Seluruh transaksi
+              menggunakan metode pembayaran yang sesuai syariah tanpa menerapkan
+              bunga atau denda yang bersifat riba.
+            </p>
+          </div>
+          <div class="principle-card bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-exclamation-circle text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">02</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Menghindari Gharar</h3>
+            <p class="text-gray-700">
+              Informasi produk dan transaksi harus transparan. Semua detail
+              produk, kondisi, dan proses transaksi harus jelas untuk
+              menghindari ketidakpastian atau ketidakjelasan.
+            </p>
+          </div>
+          <div class="principle-card bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-dice text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">03</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Menghindari Maysir</h3>
+            <p class="text-gray-700">
+              Tidak boleh ada unsur spekulasi atau MLM tidak jelas. Bisnis harus
+              dijalankan dengan perhitungan yang jelas dan tidak mengandalkan
+              keberuntungan atau skema piramida.
+            </p>
+          </div>
+          <div class="principle-card bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-balance-scale text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">04</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Kejujuran & Transparansi</h3>
+            <p class="text-gray-700">
+              Produk harus memiliki deskripsi yang akurat untuk menghindari
+              ketidakpuasan dan klaim yang tidak adil. Semua informasi harus
+              jujur dan dapat diverifikasi.
+            </p>
+          </div>
+          <div class="principle-card bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div class="bg-primary rounded-full p-3 mr-4">
+                <i class="fas fa-certificate text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold">05</h3>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Produk Halal & Thayyib</h3>
+            <p class="text-gray-700">
+              Produk harus halal dan bermanfaat. Semua produk yang dijual harus
+              memenuhi standar kehalalan dan memberikan manfaat bagi pembeli,
+              tidak merusak atau merugikan.
+            </p>
+          </div>
+        </div>
+        <div class="mt-16 text-center">
+          <a
+            href="#akad"
+            class="btn-primary py-3 px-6 rounded-full shadow-lg inline-block"
+            >Pelajari Akad dalam DropFifth</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Akad dalam DropFifth -->
+    <section id="akad" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Akad yang Bisa Dipilih dalam DropFifth
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="akad-card bg-white shadow-lg">
+            <div class="bg-primary py-4 px-6">
+              <h3 class="text-xl font-bold text-white">Akad Salam</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">
+                Akad Salam merupakan transaksi jual beli dengan pembayaran di
+                muka dan pengiriman barang ditangguhkan. Dalam DropFifth,
+                pelanggan melakukan pembayaran penuh terlebih dahulu, kemudian
+                dropshipper meneruskan pemesanan kepada pemasok.
+              </p>
+              <h4 class="font-bold mb-2">Keunggulan:</h4>
+              <ul class="list-disc pl-5 mb-4">
+                <li>Kejelasan harga dan spesifikasi produk</li>
+                <li>Pembayaran di muka memudahkan pemasok</li>
+                <li>Sesuai syariah dengan kejelasan transaksi</li>
+              </ul>
+              <h4 class="font-bold mb-2">Mekanisme:</h4>
+              <ol class="list-decimal pl-5">
+                <li>Konsumen membayar penuh ke dropshipper</li>
+                <li>Dropshipper membayar pemasok</li>
+                <li>Pemasok mengirim barang ke konsumen</li>
+                <li>
+                  Keuntungan dropshipper adalah selisih harga jual dan beli
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div class="akad-card bg-white shadow-lg">
+            <div class="bg-primary py-4 px-6">
+              <h3 class="text-xl font-bold text-white">Akad Wakalah</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">
+                Akad Wakalah adalah akad perwakilan, dimana dropshipper
+                bertindak sebagai wakil dari pembeli untuk melakukan pembelian
+                dari pemasok. Dropshipper mendapatkan upah atau ujrah atas
+                jasanya.
+              </p>
+              <h4 class="font-bold mb-2">Keunggulan:</h4>
+              <ul class="list-disc pl-5 mb-4">
+                <li>Transparansi dalam pembelian</li>
+                <li>Dropshipper mendapatkan ujrah (upah) yang jelas</li>
+                <li>Menghindari jual beli barang yang belum dimiliki</li>
+              </ul>
+              <h4 class="font-bold mb-2">Mekanisme:</h4>
+              <ol class="list-decimal pl-5">
+                <li>Konsumen mewakilkan pembelian ke dropshipper</li>
+                <li>
+                  Konsumen membayar harga produk dan ujrah (fee) ke dropshipper
+                </li>
+                <li>
+                  Dropshipper membeli produk dari pemasok atas nama konsumen
+                </li>
+                <li>Pemasok mengirim produk langsung ke konsumen</li>
+                <li>Keuntungan dropshipper adalah ujrah/fee yang disepakati</li>
+              </ol>
+            </div>
+          </div>
+          <div class="akad-card bg-white shadow-lg">
+            <div class="bg-primary py-4 px-6">
+              <h3 class="text-xl font-bold text-white">Akad Murabahah</h3>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4">
+                Akad Murabahah adalah jual beli dengan menyebutkan harga pokok
+                dan keuntungan yang disepakati. Dalam model ini, dropshipper
+                membeli produk terlebih dahulu dari pemasok kemudian menjualnya
+                ke pembeli dengan margin keuntungan yang jelas.
+              </p>
+              <h4 class="font-bold mb-2">Keunggulan:</h4>
+              <ul class="list-disc pl-5 mb-4">
+                <li>Transparansi harga pokok dan keuntungan</li>
+                <li>Menghindari spekulasi harga</li>
+                <li>Keadilan bagi kedua belah pihak</li>
+              </ul>
+              <h4 class="font-bold mb-2">Mekanisme:</h4>
+              <ol class="list-decimal pl-5">
+                <li>Dropshipper membeli produk dari pemasok terlebih dahulu</li>
+                <li>
+                  Dropshipper menawarkan produk ke konsumen dengan menyebutkan
+                  harga pokok dan keuntungan
+                </li>
+                <li>Setelah kesepakatan, konsumen melakukan pembayaran</li>
+                <li>
+                  Dropshipper menginstruksikan pemasok untuk mengirim barang ke
+                  konsumen
+                </li>
+                <li>
+                  Keuntungan dropshipper adalah margin yang telah disepakati
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 text-center">
+          <a
+            href="#strategi"
+            class="btn-primary py-3 px-6 rounded-full shadow-lg inline-block"
+            >Pelajari Strategi DropFifth</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Tombol Scroll ke Atas (hanya muncul di mobile) -->
+<button
+id="scrollToTopBtn"
+class="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-800 transition-opacity opacity-0 pointer-events-none z-50 block md:hidden"
+title="Kembali ke atas"
+>
+<!-- Ikon Panah ke Atas -->
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+</svg>
+</button>
+
+<script>
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    scrollToTopBtn.classList.remove("opacity-0", "pointer-events-none");
+  } else {
+    scrollToTopBtn.classList.add("opacity-0", "pointer-events-none");
+  }
+});
+
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+</script>
+
+
+    <!-- Strategi Menjalankan DropFifth -->
+    <section id="strategi" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Strategi Dalam Menjalankan DropFifth
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <!-- Strategy 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full font-bold mr-4"
+              >
+                1
+              </div>
+              <h3 class="text-xl font-bold">Memilih Pemasok yang Halal</h3>
+            </div>
+            <p class="text-gray-700 text-justify">
+              Pemasok harus memahami akad syariah dan hanya menjual produk halal
+              yang berkualitas. Menjalin hubungan yang baik dengan pemasok yang
+              memahami dan memegang teguh prinsip syariah.
+            </p>
+          </div>
+
+          <!-- Strategy 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full font-bold mr-4"
+              >
+                2
+              </div>
+              <h3 class="text-xl font-bold">Produk Sesuai Syariah</h3>
+            </div>
+            <p class="text-gray-700 text-justify">
+              Hanya menjual barang yang halal dan berkualitas. Pastikan semua
+              produk yang dijual memenuhi standar kehalalan dan kualitas yang
+              baik untuk konsumen.
+            </p>
+          </div>
+
+          <!-- Strategy 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full font-bold mr-4"
+              >
+                3
+              </div>
+              <h3 class="text-xl font-bold">Transaksi Bebas Riba</h3>
+            </div>
+            <p class="text-gray-700 text-justify">
+              Menggunakan pembayaran syariah dan tanpa kredit berbunga.
+              Menerapkan metode pembayaran yang bebas dari unsur riba dan bunga
+              dalam setiap transaksi.
+            </p>
+          </div>
+
+          <!-- Strategy 4 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full font-bold mr-4"
+              >
+                4
+              </div>
+              <h3 class="text-xl font-bold">Informasi Produk Transparan</h3>
+            </div>
+            <p class="text-gray-700 text-justify">
+              Tidak boleh ada deskripsi produk yang menipu pelanggan. Berikan
+              informasi produk yang akurat, jujur, dan lengkap untuk menghindari
+              gharar (ketidakjelasan).
+            </p>
+          </div>
+
+          <!-- Strategy 5 (centered) -->
+          <div class="md:col-span-2 flex justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-2/3">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full font-bold mr-4"
+                >
+                  5
+                </div>
+                <h3 class="text-xl font-bold">
+                  Membangun Kepercayaan Pelanggan
+                </h3>
+              </div>
+              <p class="text-gray-700 text-justify">
+                Pelayanan yang baik dan kebijakan pengembalian barang yang adil.
+                Prioritaskan kepuasan pelanggan dan bangun hubungan jangka
+                panjang berdasarkan kepercayaan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 text-center">
+          <a
+            href="#produk"
+            class="bg-green-600 text-white py-3 px-6 rounded-full shadow-lg inline-block hover:bg-green-700 transition"
+          >
+            Lihat Contoh Produk
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contoh Produk -->
+    <section id="produk" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Produk DropFifth</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Produk 1 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative overflow-hidden">
+              <span
+                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 font-semibold z-10"
+                >Halal</span
+              >
+              <img
+                src="bajumuslim.jpeg"
+                alt="Baju Muslim Pria"
+                class="w-full h-64 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Baju Muslim Pria</h3>
+              <div class="flex items-center mb-2">
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star-half-alt text-yellow-500"></i>
+                <span class="text-gray-600 ml-2">(4.5)</span>
+              </div>
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xl font-bold text-primary">Rp 250.000</span>
+                <span class="text-sm text-gray-500 line-through"
+                  >Rp 300.000</span
+                >
+              </div>
+              <p class="text-gray-700 mb-4">
+                Baju muslim pria dengan bahan premium, nyaman dipakai, dan
+                desain modern. Tersedia berbagai ukuran dan warna.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-accent transition duration-300"
+              >
+                Lihat Detail
+              </button>
+            </div>
+          </div>
+          <!-- Produk 2 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="skincare.png"
+                alt="Skincare Muslimah"
+                class="w-full h-64 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Skincare Muslimah</h3>
+              <div class="flex items-center mb-2">
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <span class="text-gray-600 ml-2">(5.0)</span>
+              </div>
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xl font-bold text-primary">Rp 175.000</span>
+                <span class="text-sm text-gray-500 line-through"
+                  >Rp 225.000</span
+                >
+              </div>
+              <p class="text-gray-700 mb-4">
+                Rangkaian skincare dengan sertifikasi halal, bebas alkohol, dan
+                bahan kimia berbahaya. Cocok untuk semua jenis kulit.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-accent transition duration-300"
+              >
+                Lihat Detail
+              </button>
+            </div>
+          </div>
+          <!-- Produk 3 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative overflow-hidden">
+              <span
+                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 font-semibold z-10"
+                >Halal</span
+              >
+              <img
+                src="alqurandigital.jpg"
+                alt="Al-Quran Digital"
+                class="w-full h-64 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Al-Quran Digital</h3>
+              <div class="flex items-center mb-2">
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star-half-alt text-yellow-500"></i>
+                <span class="text-gray-600 ml-2">(4.7)</span>
+              </div>
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xl font-bold text-primary">Rp 1.200.000</span>
+                <span class="text-sm text-gray-500 line-through"
+                  >Rp 1.500.000</span
+                >
+              </div>
+              <p class="text-gray-700 mb-4">
+                Al-Quran digital dengan fitur lengkap: tafsir, terjemahan, audio
+                murattal, dan penanda halaman. Baterai tahan lama.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-accent transition duration-300"
+              >
+                Lihat Detail
+              </button>
+            </div>
+          </div>
+          <!-- Produk 4 -->
+          <div
+            class="product-card bg-white rounded-lg shadow-lg overflow-hidden"
+          >
+            <div class="relative overflow-hidden">
+              <span
+                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 font-semibold z-10"
+                >Halal</span
+              >
+              <img
+                src="madu.jpg"
+                alt="Madurasa"
+                class="w-full h-64 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">MaduRasa</h3>
+              <div class="flex items-center mb-2">
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
+                <span class="text-gray-600 ml-2">(4.9)</span>
+              </div>
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xl font-bold text-primary">Rp 350.000</span>
+                <span class="text-sm text-gray-500 line-through"
+                  >Rp 425.000</span
+                >
+              </div>
+              <p class="text-gray-700 mb-4">
+                Madu murni Halal Syariah dengan campuran habbatussauda, dan
+                kurma, cocok untuk meningkatkan imun stamina.
+              </p>
+              <button
+                class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-accent transition duration-300"
+              >
+                Lihat Detail
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+          <p>&copy; 2025 DropFifth - Dropshipping Berbasis Syariah.</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
